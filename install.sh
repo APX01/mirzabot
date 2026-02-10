@@ -7,7 +7,7 @@ fi
 # Function to update the script itself automatically
 function self_update_script() {
     local MASTER_PATH="/root/install.sh"
-    local BIN_LINK="/usr/local/bin/mirzapro"
+    local BIN_LINK="/usr/local/bin/mirza"
     local URL="https://raw.githubusercontent.com/mahdiMGF2/mirza_pro/main/install.sh"
     local TEMP_FILE="/tmp/mirza_pro_update.sh"
     echo -e "\e[33mChecking for updates...\033[0m"
@@ -114,16 +114,16 @@ function show_logo() {
 # Display Menu
 function show_menu() {
     show_logo
-    echo -e "\033[1;36m1)\033[0m Install MirzaPro Bot"
-    echo -e "\033[1;36m2)\033[0m Update MirzaPro Bot"
-    echo -e "\033[1;36m3)\033[0m Remove MirzaPro Bot"
+    echo -e "\033[1;36m1)\033[0m Install Mirza Bot"
+    echo -e "\033[1;36m2)\033[0m Update Mirza Bot"
+    echo -e "\033[1;36m3)\033[0m Remove Mirza Bot"
     # echo -e "\033[1;36m4)\033[0m Export Database"
     # echo -e "\033[1;36m5)\033[0m Import Database"
     # echo -e "\033[1;36m6)\033[0m Configure Automated Backup"
     # echo -e "\033[1;36m7)\033[0m Renew SSL Certificates"
     # echo -e "\033[1;36m8)\033[0m Change Domain"
     # echo -e "\033[1;36m9)\033[0m Additional Bot Management"
-    echo -e "\033[1;36m10)\033[0m Migrate Free to Pro (Beta)"
+    echo -e "\033[1;36m10)\033[0m Migrate Free Old Version  to Free New Version (Beta)"
     echo -e "\033[1;36m11)\033[0m Exit"
     echo ""
     read -p "Select an option [1-10]: " option
@@ -761,7 +761,7 @@ EOF
     fi
     # Add executable permission and link (This is handled by self_update_script as well, but kept for completeness)
     chmod +x /root/install.sh
-    ln -sf /root/install.sh /usr/local/bin/mirzapro
+    ln -sf /root/install.sh /usr/local/bin/mirza
     # Trigger self-update to ensure next run uses latest
     self_update_script
 }
@@ -1400,12 +1400,12 @@ EOF
     fi
     # Cleanup
     rm -rf "$TEMP_DIR"
-    echo -e "\n\e[92mMirza Pro Bot updated to latest version successfully!\033[0m"
-    # Ensure /root/install.sh is executable and linked to mirzapro
+    echo -e "\n\e[92mMirza Bot updated to latest version successfully!\033[0m"
+    # Ensure /root/install.sh is executable and linked to mirza
     if [ -f "/root/install.sh" ]; then
         sudo chmod +x /root/install.sh
-        sudo ln -sf /root/install.sh /usr/local/bin/mirzapro
-        echo -e "\e[92mEnsured /root/install.sh is executable and 'mirzapro' command is linked.\033[0m"
+        sudo ln -sf /root/install.sh /usr/local/bin/mirza
+        echo -e "\e[92mEnsured /root/install.sh is executable and 'mirza' command is linked.\033[0m"
     else
         echo -e "\e[91mError: /root/install.sh not found after update attempt.\033[0m"
     fi
@@ -2721,9 +2721,9 @@ EOF
     # Run Table Setup Script
     curl -k "https://${DOMAIN_NAME}/table.php" > /dev/null 2>&1
 
-    # 13. Update CLI Shortcut (mirzapro)
-    cp /root/install.sh /usr/local/bin/mirzapro
-    chmod +x /usr/local/bin/mirzapro
+    # 13. Update CLI Shortcut (mirza)
+    cp /root/install.sh /usr/local/bin/mirza
+    chmod +x /usr/local/bin/mirza
 
     # Final Message
     clear
@@ -2734,7 +2734,7 @@ EOF
     echo -e "\033[36mNew User:\033[0m     $NEW_DB_USER"
     echo -e "\033[36mNew Pass:\033[0m     $NEW_DB_PASS"
     echo -e "\033[36mBot Domain:\033[0m   https://$DOMAIN_NAME"
-    echo -e "\033[33mUse command 'mirzapro' to manage the bot from now on.\033[0m"
+    echo -e "\033[33mUse command 'mirza' to manage the bot from now on.\033[0m"
     echo ""
 }
 
